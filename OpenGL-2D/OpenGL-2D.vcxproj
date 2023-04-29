@@ -92,6 +92,11 @@
     <Link>
       <AdditionalDependencies>freeglut.lib;glew32.lib;glfw3.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Dependencies\FreeImage\dll\*" "$(OutDir)"
+copy "$(SolutionDir)Dependencies\GLEW\dll\*" "$(OutDir)"
+copy "$(SolutionDir)Dependencies\GLFW\dll\*" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
