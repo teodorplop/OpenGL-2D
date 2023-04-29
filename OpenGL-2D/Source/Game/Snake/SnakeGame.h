@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Engine.h"
+#include "Snake.h"
 
 class SnakeGame {
 private:
