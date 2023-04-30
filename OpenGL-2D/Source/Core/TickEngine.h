@@ -8,8 +8,18 @@ class TickEngine {
 private:
 	static std::unordered_set<ITickable*> s_Tickables;
 public:
+	/// <summary>
+	/// Registers an object for Tick function
+	/// </summary>
 	static void Register(ITickable* tickable);
+
+	/// <summary>
+	/// Unregisters an object for Tick function
+	/// </summary>
 	static void Unregister(ITickable* tickable);
 
+	/// <summary>
+	/// Tick method, called each frame
+	/// </summary>
 	static void Tick(float deltaTime);
 };

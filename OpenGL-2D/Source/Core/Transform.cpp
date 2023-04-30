@@ -22,20 +22,6 @@ glm::mat4 Transform::GetMatrix() {
 	return m_Matrix;
 }
 
-void Transform::TranslateTo(const glm::vec3& position) {
-	TranslateBy(position - m_Position);
-}
-
-void Transform::ScaleTo(const glm::vec3& scale) {
-	ScaleBy(scale / m_Scale);
-}
-
-void Transform::RotateTo(const glm::vec3& rotation) {
-	RotateBy(rotation.x - m_Rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-	RotateBy(rotation.y - m_Rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-	RotateBy(rotation.z - m_Rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
-}
-
 void Transform::TranslateBy(const glm::vec3& distance) {
 	m_Matrix = glm::translate(m_Matrix, distance);
 	m_Position += distance;

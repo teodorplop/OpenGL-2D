@@ -2,31 +2,31 @@
 #include <cstdlib>
 #include <ctime>
 
-bool Random::init = false;
+bool Random::m_IsInitialized = false;
 
 void Random::SetSeed(int seed) {
-	init = true;
+	m_IsInitialized = true;
 	srand(seed);
 }
 
 int Random::Range(int left, int right) {
 	Init();
-	return left + rand() % (right - left + 1);
+	return left + rand() % (right - left);
 }
 
 float Random::Range(float left, float right) {
 	Init();
-	return left + Next() * (right - left + 1);
+	return left + Next() * (right - left);
 }
 
 float Random::Next() {
 	Init();
-	return (float)rand() / (float)RAND_MAX;
+	return (float)rand() / RAND_MAX;
 }
 
 void Random::Init() {
-	if (!init) {
-		init = true;
+	if (!m_IsInitialized) {
+		m_IsInitialized = true;
 
 		srand((unsigned int)time(NULL));
 	}

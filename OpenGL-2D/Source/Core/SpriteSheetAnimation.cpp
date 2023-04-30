@@ -12,11 +12,11 @@ SpriteSheetAnimation::SpriteSheetAnimation(SpriteSheet* spriteSheet, float frame
 	m_IsPlaying = false;
 }
 
-void SpriteSheetAnimation::SetTicksPerSecond(float framesPerSecond) {
+void SpriteSheetAnimation::SetFramesPerSecond(float framesPerSecond) {
 	m_FramesPerSecond = framesPerSecond;
 }
 
-float SpriteSheetAnimation::GetTicksPerSecond() {
+float SpriteSheetAnimation::GetFramesPerSecond() {
 	return m_FramesPerSecond;
 }
 

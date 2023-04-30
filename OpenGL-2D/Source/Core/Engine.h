@@ -3,6 +3,9 @@
 #include "Camera.h"
 #include "Window.h"
 
+/// <summary>
+/// Responsible for initializing OpenGL and running the App
+/// </summary>
 class Engine {
 private:
 	Window* m_Window;
@@ -13,8 +16,13 @@ public:
 	Engine();
 	~Engine();
 
+	/// <summary>
+	/// Returns the camera created for rendering
+	/// </summary>
 	Camera* GetCamera();
 
-	// function which does the whole thing
+	/// <summary>
+	/// Do the thing!
+	/// </summary>
 	void Run();
 };

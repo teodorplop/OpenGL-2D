@@ -1,6 +1,8 @@
 #pragma once
 
-// Any object inheriting from this will have access to the Tick function, which is called each frame before rendering
+/// <summary>
+/// Used by TickEngine. Any object inheriting this will have access to the Tick method, called each frame.
+/// </summary>
 class ITickable {
 	friend class TickEngine;
 

@@ -1,17 +1,31 @@
 #pragma once
 
-// Random class
+/// <summary>
+/// Helper class, used to generate random numbers
+/// </summary>
 struct Random {
 private:
-	static bool init;
+	static bool m_IsInitialized;
 	static void Init();
 
 public:
+	/// <summary>
+	/// Sets the seed used to generate random numbers
+	/// </summary>
 	static void SetSeed(int seed);
-	// Returns a value between [left, right].
+
+	/// <summary>
+	/// Returns a value between [left, right)
+	/// </summary>
 	static int Range(int left, int right);
+
+	/// <summary>
+	/// Returns a value between [left, right]
+	/// </summary>
 	static float Range(float left, float right);
 
-	// Returns a value between [0, 1].
+	/// <summary>
+	/// Returns a value between [0, 1]
+	/// </summary>
 	static float Next();
 };

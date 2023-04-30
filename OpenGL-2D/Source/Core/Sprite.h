@@ -4,7 +4,9 @@
 
 #include <string>
 
-// Class used to display a texture
+/// <summary>
+/// Renders a texture on the screen
+/// </summary>
 class Sprite : public IRenderable {
 private:
 	Mesh* GenerateMesh();
@@ -23,5 +25,8 @@ public:
 
 	virtual Transform* GetTransform() override;
 
+	/// <summary>
+	/// If set to true, no matter how we rescale the sprite, it will always preserve its aspect ratio
+	/// </summary>
 	void SetPreserveAspectRatio(bool preserveAspectRatio);
 };

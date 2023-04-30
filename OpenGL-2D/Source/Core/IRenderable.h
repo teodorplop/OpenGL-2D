@@ -6,7 +6,9 @@
 #include "Material.h"
 #include "Transform.h"
 
-// Class used for objects that need to be rendered.
+/// <summary>
+/// Used by Renderer. Any object inheriting this can be rendered.
+/// </summary>
 class IRenderable {
 private:
 	bool m_IsActive;
@@ -24,6 +26,13 @@ public:
 	Material* GetMaterial();
 	virtual Transform* GetTransform();
 
+	/// <summary>
+	/// Sets whether this object will be rendered or not
+	/// </summary>
 	void SetActive(bool isActive);
+
+	/// <summary>
+	/// Returns whether the object will be rendered or not
+	/// </summary>
 	bool IsActive();
 };

@@ -2,7 +2,9 @@
 
 #include <include\gl.h>
 
-// Simple window class, contains a title, width and height.
+/// <summary>
+/// OpenGL Window Wrapper Class
+/// </summary>
 class Window {
 private:
 	const char* m_Title;
@@ -12,17 +14,39 @@ private:
 	bool Init();
 
 public:
+	/// <summary>
+	/// Creates a new Window, with title and resolution
+	/// </summary>
 	Window(const char* title, int width, int height);
 
-	// Returns true if we received a close window action
+	/// <summary>
+	/// Returns whether there has been a request to close the window
+	/// </summary>
 	bool ShouldBeClosed();
 
-	// Things used for rendering
+	/// <summary>
+	/// Polls input events
+	/// </summary>
 	void PollEvents();
+
+	/// <summary>
+	/// Swaps front and back buffers on the window
+	/// </summary>
 	void SwapBuffers();
 
+	/// <summary>
+	/// Width of the window, in pixels
+	/// </summary>
 	int GetWidth();
+
+	/// <summary>
+	/// Height of the window, in pixels
+	/// </summary>
 	int GetHeight();
+
+	/// <summary>
+	/// GLFW Window, which is wrapped inside this object
+	/// </summary>
 	GLFWwindow* GetGLFWWindow();
 };
 

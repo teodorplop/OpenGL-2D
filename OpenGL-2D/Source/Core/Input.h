@@ -4,6 +4,9 @@
 #include <include\glm.h>
 #include <unordered_map>
 
+/// <summary>
+/// Helper class, used to query input actions
+/// </summary>
 class Input {
 private:
 	static Window* s_Window;
@@ -27,24 +30,49 @@ private:
 	static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 public:
-	// Sets the window we want to handle input for
+	/// <summary>
+	/// Sets the window we want to handle input for
+	/// </summary>
 	static void Handle(Window* window);
-	// Clear stuff at the end of frame
+
+	/// <summary>
+	/// Called to clear input actions at the end of a frame
+	/// </summary>
 	static void EndOfFrame();
 
-	// Returns true if we pressed the key THIS FRAME
+	/// <summary>
+	/// Returns true if the user pressed the key THIS FRAME
+	/// </summary>
 	static bool GetKeyDown(int key);
-	// Returns true if the key is pressed
+	/// <summary>
+	/// Returns true if the key is pressed
+	/// </summary>
 	static bool GetKey(int key);
-	// Returns true if we released the key THIS FRAME
+	/// <summary>
+	/// Returns true if the user released the key THIS FRAME
+	/// </summary>
 	static bool GetKeyUp(int key);
 
-	// Same, but for mouse buttons
+	/// <summary>
+	/// Returns true if the user pressed this mouse button THIS FRAME
+	/// </summary>
 	static bool GetMouseButtonDown(int button);
+	/// <summary>
+	/// Returns true if this mouse button is pressed
+	/// </summary>
 	static bool GetMouseButton(int button);
+	/// <summary>
+	/// Returns true if the user released this mouse button THIS FRAME
+	/// </summary>
 	static bool GetMouseButtonUp(int button);
 
+	/// <summary>
+	/// Returns value of the scroll wheel for this frame
+	/// </summary>
 	static float GetScrollWheel();
-	// Returns mouse position in screen coordinates
+
+	/// <summary>
+	/// Returns the mouse position, in screen coordinates
+	/// </summary>
 	static glm::vec2 GetMousePosition();
 };

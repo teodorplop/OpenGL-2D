@@ -1,8 +1,9 @@
 #pragma once
 
-// Returns informations like deltaTime (used for animations) and FPS
+/// <summary>
+/// Responsible for managing time
+/// </summary>
 class Time {
-	// kind of ugly, used to cap the fps at 60
 	friend class Engine;
 
 private:
@@ -16,6 +17,13 @@ private:
 	static void Tick(float time);
 
 public:
+	/// <summary>
+	/// Time since last frame
+	/// </summary>
 	static float DeltaTime();
+
+	/// <summary>
+	/// Current FPS, refreshed each second
+	/// </summary>
 	static float FPS();
 };

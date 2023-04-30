@@ -3,7 +3,9 @@
 #include <include\gl.h>
 #include <include\glm.h>
 
-// Responsible for compiling, binding and sending uniforms to shaders.
+/// <summary>
+/// Responsible for compiling, binding and sending uniforms to shaders.
+/// </summary>
 class Shader {
 private:
 	static const std::string K_SHADERS_PATH;
@@ -17,8 +19,16 @@ public:
 	Shader(const std::string& vertexFile, const std::string& fragmentFile);
 	~Shader();
 
+	/// <summary>
+	/// Binds the shader to GPU
+	/// </summary>
 	void Bind();
+
+	/// <summary>
+	/// Unbinds the shader from GPU
+	/// </summary>
 	void Unbind();
+
 	void SetUniformMatrix4fv(const char* name, const glm::mat4& matrix);
 	void SetUniform1f(const char* name, const float& value);
 	void SetUniform2f(const char* name, const glm::vec2& vector);

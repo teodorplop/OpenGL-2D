@@ -6,8 +6,9 @@
 #include <include\glm.h>
 #include <unordered_map>
 
-// Class which holds properties (uniforms) that need to be passed into the shader
-// maybe add a templates here?
+/// <summary>
+/// Holds and sets properties to a given shader, when rendering
+/// </summary>
 class Material {
 private:
 	Shader* m_Shader;
@@ -20,6 +21,9 @@ private:
 public:
 	Material(Shader* shader);
 
+	/// <summary>
+	/// Underlying shader
+	/// </summary>
 	Shader* GetShader();
 
 	void SetProperty(std::string name, int value);
@@ -27,6 +31,13 @@ public:
 	void SetProperty(std::string name, glm::vec2 value);
 	void SetProperty(std::string name, Texture* value);
 
+	/// <summary>
+	/// Binds the shader to GPU and sets all properties
+	/// </summary>
 	void Bind();
+
+	/// <summary>
+	/// Unbinds the shader from GPU
+	/// </summary>
 	void Unbind();
 };

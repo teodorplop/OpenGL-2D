@@ -2,7 +2,9 @@
 
 #include <include\glm.h>
 
-// Responsible for transformation on all IRenderable objects
+/// <summary>
+/// Holds information about an object position, rotation and scale
+/// </summary>
 class Transform {
 private:
 	glm::vec3 m_Position, m_Rotation, m_Scale;
@@ -15,13 +17,24 @@ public:
 	glm::vec3 GetPosition();
 	glm::vec3 GetRotation();
 	glm::vec3 GetScale();
+
+	/// <summary>
+	/// Transformation matrix, based on translation, scale and rotation
+	/// </summary>
 	glm::mat4 GetMatrix();
 
-	void TranslateTo(const glm::vec3& position);
-	void ScaleTo(const glm::vec3& scale);
-	void RotateTo(const glm::vec3& rotation);
-
+	/// <summary>
+	/// Translates in the direction the object is facing
+	/// </summary>
 	void TranslateBy(const glm::vec3& distance);
+
+	/// <summary>
+	/// Scales by a certain amount on each axis
+	/// </summary>
 	void ScaleBy(const glm::vec3& scale);
+
+	/// <summary>
+	/// Rotates by a certain amount on one axis
+	/// </summary>
 	void RotateBy(float angle, const glm::vec3& axis);
 };
