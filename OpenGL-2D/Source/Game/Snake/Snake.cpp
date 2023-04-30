@@ -22,6 +22,7 @@ Snake::Snake() {
 	m_Tail->GetTransform()->RotateBy(90, glm::vec3(0, 0, 1));
 
 	m_Direction = Direction::Up;
+	m_Speed = 3;
 }
 
 Snake::~Snake() {
@@ -41,6 +42,8 @@ void Snake::Tick(float deltaTime) {
 
 	if (WasSwitchDrectionRequested(newDirection))
 		SwitchDirection(newDirection);
+
+	m_Head->GetTransform()->TranslateBy(glm::vec3(0, m_Speed * deltaTime, 0));
 }
 
 bool Snake::WasSwitchDrectionRequested(Direction& newDirection) {
@@ -74,22 +77,14 @@ void Snake::SwitchDirection(Direction newDirection) {
 	if (!CanSwitchDirection(newDirection))
 		return;
 
-	if (newDirection == Direction::Up) {
+	if (newDirection == Direction::Up)
 		m_Head->GetTransform()->RotateBy(m_Direction == Direction::Left ? -90.0f : 90.0f, glm::vec3(0, 0, 1));
-		m_Head->GetTransform()->TranslateBy(glm::vec3(0, 1, 0));
-	}
-	else if (newDirection == Direction::Down) {
+	else if (newDirection == Direction::Down)
 		m_Head->GetTransform()->RotateBy(m_Direction == Direction::Left ? 90.0f : -90.0f, glm::vec3(0, 0, 1));
-		m_Head->GetTransform()->TranslateBy(glm::vec3(0, 1, 0));
-	}
-	else if (newDirection == Direction::Left) {
+	else if (newDirection == Direction::Left)
 		m_Head->GetTransform()->RotateBy(m_Direction == Direction::Up ? 90.0f : -90.0f, glm::vec3(0, 0, 1));
-		m_Head->GetTransform()->TranslateBy(glm::vec3(0, 1, 0));
-	}
-	else if (newDirection == Direction::Right) {
+	else if (newDirection == Direction::Right)
 		m_Head->GetTransform()->RotateBy(m_Direction == Direction::Up ? -90.0f : 90.0f, glm::vec3(0, 0, 1));
-		m_Head->GetTransform()->TranslateBy(glm::vec3(0, 1, 0));
-	}
 
 	m_Direction = newDirection;
 }

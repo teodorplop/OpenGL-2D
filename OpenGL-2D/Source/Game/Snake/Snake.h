@@ -12,6 +12,7 @@ private:
 	Texture* m_TailTexture;
 
 	Direction m_Direction;
+	float m_Speed;
 
 	Sprite* m_Head;
 	std::vector<Sprite*> m_Body;

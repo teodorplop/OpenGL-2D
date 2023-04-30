@@ -15,7 +15,7 @@ AnimationsExample::AnimationsExample(Camera* camera) {
 	birdSpriteSheet->SetPreserveAspectRatio(true);
 
 	SpriteSheetAnimation* birdAnimation = new SpriteSheetAnimation(birdSpriteSheet);
-	birdAnimation->SetTicksPerSecond(20);
+	birdAnimation->SetFramesPerSecond(20);
 	birdAnimation->Start();
 
 	// Create cat
@@ -26,6 +26,6 @@ AnimationsExample::AnimationsExample(Camera* camera) {
 	catSpriteSheet->GetTransform()->TranslateBy(glm::vec3(2, 0, 0));
 
 	SpriteSheetAnimation* catAnimation = new SpriteSheetAnimation(catSpriteSheet);
-	catAnimation->SetTicksPerSecond(5);
+	catAnimation->SetFramesPerSecond(5);
 	catAnimation->Start();
 }
