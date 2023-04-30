@@ -185,6 +185,7 @@ copy "$(SolutionDir)Dependencies\GLFW\dll\*" "$(OutDir)"</Command>
     <ClInclude Include="Source\Core\Utils\ImageUtils.h" />
     <ClInclude Include="Source\Core\Utils\Random.h" />
     <ClInclude Include="Source\Game\Engine.h" />
+    <ClInclude Include="Source\Game\Snake\Direction.h" />
     <ClInclude Include="Source\Game\Snake\Snake.h" />
     <ClInclude Include="Source\Game\Snake\SnakeGame.h" />
     <ClInclude Include="Source\Game\Snake\SnakePart.h" />

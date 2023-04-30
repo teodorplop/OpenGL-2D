@@ -43,12 +43,12 @@ public:
 	void ScaleBy(const glm::vec3& scale);
 
 	/// <summary>
-	/// Rotates by a certain amount on one axis
+	/// Rotates by a certain amount on one axis, trigonometric
 	/// </summary>
 	void RotateBy(float angle, const glm::vec3& axis);
 
 	/// <summary>
-	/// Rotates to a given rotation
+	/// Rotates to a given rotation, trigonometric
 	/// </summary>
 	void RotateTo(const glm::vec3& rotation);
 };

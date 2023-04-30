@@ -2,17 +2,17 @@
 
 #include "../Engine.h"
 #include "SnakePart.h"
+#include "Direction.h"
 
 class Snake : public ITickable {
 private:
-	enum Direction {Up, Down, Left, Right};
-
 	Texture* m_HeadTexture;
 	Texture* m_BodyTexture;
 	Texture* m_CurveTexture;
 	Texture* m_TailTexture;
 
 	Direction m_Direction;
+
 	bool m_HasRequestedNewDirection;
 	Direction m_NewDirection;
 
@@ -21,16 +21,13 @@ private:
 
 	std::vector<SnakePart*> m_Body;
 
+	void CreateParts(int length);
 	SnakePart* CreatePart();
 
 	bool WasSwitchDirectionRequested(Direction& newDirection);
 	bool CanSwitchDirection(Direction newDirection);
 
-	glm::vec3 GetMovementDelta();
-
 	void Move(float deltaTime);
-	bool SwitchDirection();
-	void BodyFollow();
 
 protected:
 	void Tick(float deltaTime) override;

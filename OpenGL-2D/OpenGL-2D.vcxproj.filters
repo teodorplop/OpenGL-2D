@@ -209,6 +209,9 @@
     <ClInclude Include="Source\Game\Snake\SnakePart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Game\Snake\Direction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Sprite.frag" />
