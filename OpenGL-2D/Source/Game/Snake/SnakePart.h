@@ -25,6 +25,7 @@ private:
 
 public:
 	SnakePart(Texture* head, Texture* body, Texture* curve, Texture* tail);
+	~SnakePart();
 
 	void SetPrevious(SnakePart* snakePart);
 	void SetNext(SnakePart* snakePart);

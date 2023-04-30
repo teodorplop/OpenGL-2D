@@ -10,6 +10,10 @@ SnakePart::SnakePart(Texture* head, Texture* body, Texture* curve, Texture* tail
 	SetType(Type::Body);
 }
 
+SnakePart::~SnakePart() {
+	delete m_Sprite;
+}
+
 void SnakePart::SetType(Type type) {
 	m_Type = type;
 	if (m_Type == Type::Head)
