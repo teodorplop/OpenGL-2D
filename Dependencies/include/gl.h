@@ -5,14 +5,15 @@
 #ifndef GL_DISABLE_GLEW
 	#define GLEW_ENABLED
 	#include <GL/glew.h>
+	#include <GL/freeglut.h>
 
-	#ifdef _WIN32
-		#include <GL/wglew.h>
-	#endif
+	//#ifdef _WIN32
+		//#include <GL/wglew.h>
+	//#endif
 
-	#if defined(__linux__)
-		#include <GL/glxew.h>
-	#endif
+	//#if defined(__linux__)
+	//	#include <GL/glxew.h>
+	//#endif
 #endif
 
 #include <GLFW/glfw3.h>

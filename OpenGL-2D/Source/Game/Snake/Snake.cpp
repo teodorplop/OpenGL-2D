@@ -43,7 +43,7 @@ void Snake::Tick(float deltaTime) {
 	if (WasSwitchDrectionRequested(newDirection))
 		SwitchDirection(newDirection);
 
-	m_Head->GetTransform()->TranslateBy(glm::vec3(0, m_Speed * deltaTime, 0));
+	Move(deltaTime);
 }
 
 bool Snake::WasSwitchDrectionRequested(Direction& newDirection) {
@@ -87,4 +87,21 @@ void Snake::SwitchDirection(Direction newDirection) {
 		m_Head->GetTransform()->RotateBy(m_Direction == Direction::Up ? -90.0f : 90.0f, glm::vec3(0, 0, 1));
 
 	m_Direction = newDirection;
+}
+
+void Snake::Move(float deltaTime) {
+	glm::vec3 movementDelta;
+
+	if (m_Direction == Direction::Up)
+		movementDelta.y = 1;
+	else if (m_Direction == Direction::Down)
+		movementDelta.y = -1;
+	else if (m_Direction == Direction::Left)
+		movementDelta.x = -1;
+	else if (m_Direction == Direction::Right)
+		movementDelta.x = 1;
+
+	m_Head->GetTransform()->TranslateBy(movementDelta * m_Speed * deltaTime);
+
+	Logger::Log("(%f, %f, %f)", m_Head->GetTransform()->GetPosition().x, m_Head->GetTransform()->GetPosition().y, m_Head->GetTransform()->GetPosition().z);
 }

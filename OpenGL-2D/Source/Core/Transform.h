@@ -8,7 +8,11 @@
 class Transform {
 private:
 	glm::vec3 m_Position, m_Rotation, m_Scale;
+
+	glm::mat4 m_TranslationMatrix, m_RotationMatrix, m_ScaleMatrix;
 	glm::mat4 m_Matrix;
+
+	void RecomputeMatrix();
 
 public:
 	Transform();
@@ -24,7 +28,7 @@ public:
 	glm::mat4 GetMatrix();
 
 	/// <summary>
-	/// Translates in the direction the object is facing
+	/// Translates the object by a given distance
 	/// </summary>
 	void TranslateBy(const glm::vec3& distance);
 

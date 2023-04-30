@@ -22,6 +22,8 @@ private:
 	bool CanSwitchDirection(Direction newDirection);
 	void SwitchDirection(Direction newDirection);
 
+	void Move(float deltaTime);
+
 protected:
 	void Tick(float deltaTime) override;
 

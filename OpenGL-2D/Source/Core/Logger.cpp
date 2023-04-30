@@ -34,4 +34,6 @@ void Logger::Log(char* format, ...) {
         }
     }
     va_end(arg_list);
+
+    fputc('\n', stdout);
 }
