@@ -8,3 +8,4 @@
 #include "../Core/Sprite.h"
 #include "../Core/Logger.h"
 #include "../Core/SpriteSheetAnimation.h"
+#include "../Core/Settings.h"

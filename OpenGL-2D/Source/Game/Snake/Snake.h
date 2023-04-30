@@ -21,19 +21,21 @@ private:
 
 	std::vector<SnakePart*> m_Body;
 
+	SnakePart* CreatePart();
+
 	bool WasSwitchDirectionRequested(Direction& newDirection);
 	bool CanSwitchDirection(Direction newDirection);
 
-	bool SwitchDirection();
-	void Move(float deltaTime);
+	glm::vec3 GetMovementDelta();
 
+	void Move(float deltaTime);
+	bool SwitchDirection();
 	void BodyFollow();
-	void RemoveCurve();
 
 protected:
 	void Tick(float deltaTime) override;
 
 public:
-	Snake();
+	Snake(int length, float speed);
 	~Snake();
 };

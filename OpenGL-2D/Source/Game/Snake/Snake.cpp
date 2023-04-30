@@ -1,25 +1,22 @@
 #include "Snake.h"
 
-Snake::Snake() {
+Snake::Snake(int length, float speed) {
 	m_HeadTexture = new Texture("Snake/head.png");
 	m_BodyTexture = new Texture("Snake/body.png");
 	m_CurveTexture = new Texture("Snake/body_curve.png");
 	m_TailTexture = new Texture("Snake/tail.png");
 
-	m_Body.push_back(new SnakePart(SnakePart::Type::Head));
-	m_Body.push_back(new SnakePart(SnakePart::Type::Body));
-	m_Body.push_back(new SnakePart(SnakePart::Type::Body));
-	m_Body.push_back(new SnakePart(SnakePart::Type::Tail));
-
-	m_Body[0]->GetTransform()->TranslateBy(glm::vec3(0, 2, 0));
-	m_Body[1]->GetTransform()->TranslateBy(glm::vec3(0, 1, 0));
-	m_Body[2]->GetTransform()->TranslateBy(glm::vec3(0, 0, 0));
-	m_Body[3]->GetTransform()->TranslateBy(glm::vec3(0, -1, 0));
+	for (int i = 0; i < length; ++i) {
+		m_Body.push_back(CreatePart());
+		m_Body[i]->GetTransform()->TranslateBy(glm::vec3(0, -i, 0));
+	}
+	m_Body[0]->SetType(SnakePart::Type::Head);
+	m_Body.back()->SetType(SnakePart::Type::Tail);
 
 	m_NewDirection = m_Direction = Direction::Up;
 	m_HasRequestedNewDirection = false;
 
-	m_Speed = 3;
+	m_Speed = speed;
 	m_Timer = 1.0f / m_Speed;
 }
 
@@ -31,6 +28,10 @@ Snake::~Snake() {
 	delete m_BodyTexture;
 	delete m_CurveTexture;
 	delete m_TailTexture;
+}
+
+SnakePart* Snake::CreatePart() {
+	return new SnakePart(m_HeadTexture, m_BodyTexture, m_CurveTexture, m_TailTexture);
 }
 
 void Snake::Tick(float deltaTime) {
@@ -67,11 +68,51 @@ bool Snake::CanSwitchDirection(Direction newDirection) {
 	return m_Direction == Direction::Up || m_Direction == Direction::Down;
 }
 
+glm::vec3 Snake::GetMovementDelta() {
+	glm::vec3 movementDelta;
+	if (m_Direction == Direction::Up)
+		movementDelta.y = 1;
+	else if (m_Direction == Direction::Down)
+		movementDelta.y = -1;
+	else if (m_Direction == Direction::Left)
+		movementDelta.x = -1;
+	else if (m_Direction == Direction::Right)
+		movementDelta.x = 1;
+
+	return movementDelta;
+}
+
+void Snake::Move(float deltaTime) {
+	m_Timer -= deltaTime;
+
+	if (m_Timer <= 0) {
+		BodyFollow();
+		SwitchDirection();
+		m_Body[0]->GetTransform()->TranslateBy(GetMovementDelta());
+
+		Logger::Log("(%f, %f, %f)", m_Body[0]->GetTransform()->GetPosition().x, m_Body[0]->GetTransform()->GetPosition().y, m_Body[0]->GetTransform()->GetPosition().z);
+
+		m_Timer += 1.0f / m_Speed;
+	}
+}
+
+void Snake::BodyFollow() {
+	m_Body[m_Body.size() - 1]->GetTransform()->TranslateTo(m_Body[m_Body.size() - 2]->GetTransform()->GetPosition());
+
+	for (auto i = m_Body.size() - 2; i > 1; --i) {
+		m_Body[i]->GetTransform()->TranslateTo(m_Body[i - 1]->GetTransform()->GetPosition());
+		m_Body[i]->GetTransform()->RotateTo(m_Body[i - 1]->GetTransform()->GetRotation());
+		m_Body[i]->SetType(m_Body[i - 1]->GetType());
+	}
+
+	m_Body[1]->GetTransform()->TranslateTo(m_Body[0]->GetTransform()->GetPosition());
+	m_Body[1]->SetType(SnakePart::Type::Body);
+}
+
 bool Snake::SwitchDirection() {
 	if (!m_HasRequestedNewDirection)
 		return false;
 
-	m_Body[1]->GetTransform()->TranslateTo(m_Body[0]->GetTransform()->GetPosition());
 	m_Body[1]->SetType(SnakePart::Type::Curve);
 
 	if (m_NewDirection == Direction::Up) {
@@ -95,56 +136,4 @@ bool Snake::SwitchDirection() {
 	m_HasRequestedNewDirection = false;
 
 	return true;
-}
-
-void Snake::Move(float deltaTime) {
-	m_Timer -= deltaTime;
-
-	if (m_Timer <= 0) {
-		glm::vec3 movementDelta;
-		if (m_Direction == Direction::Up)
-			movementDelta.y = 1;
-		else if (m_Direction == Direction::Down)
-			movementDelta.y = -1;
-		else if (m_Direction == Direction::Left)
-			movementDelta.x = -1;
-		else if (m_Direction == Direction::Right)
-			movementDelta.x = 1;
-
-		BodyFollow();
-		SwitchDirection();
-		m_Body[0]->GetTransform()->TranslateBy(movementDelta);
-		RemoveCurve();
-
-		Logger::Log("(%f, %f, %f)", m_Body[0]->GetTransform()->GetPosition().x, m_Body[0]->GetTransform()->GetPosition().y, m_Body[0]->GetTransform()->GetPosition().z);
-
-		m_Timer += 1.0f / m_Speed;
-	}
-}
-
-void Snake::BodyFollow() {
-	auto i = m_Body.size();
-
-	while (i > 0) {
-		auto j = i - 1;
-		while (j > 0 && m_Body[j]->GetType() == SnakePart::Type::Curve)
-			--j;
-
-		if (j)
-			m_Body[i]->GetTransform()->TranslateTo(m_Body[j]->GetTransform()->GetPosition());
-
-		i = j;
-	}
-}
-
-void Snake::RemoveCurve() {
-	//glm::vec3 tailPos = m_Body[0]->GetTransform()->GetPosition();
-	//glm::vec3 firstCurvePos = m_Curves[0]->GetTransform()->GetPosition();
-
-	//if (glm::distance(tailPos, firstCurvePos) < 0.1) {
-	//	
-
-	//	delete m_Curves[0];
-	//	m_Curves.erase(m_Curves.begin());
-	//}
 }

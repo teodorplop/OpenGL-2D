@@ -51,9 +51,9 @@ void Transform::RotateBy(float angle, const glm::vec3& axis) {
 }
 
 void Transform::RotateTo(const glm::vec3& rotation) {
-	RotateBy(rotation.x, glm::vec3(1, 0, 0));
-	RotateBy(rotation.y, glm::vec3(0, 1, 0));
-	RotateBy(rotation.z, glm::vec3(0, 0, 1));
+	RotateBy(rotation.x - m_Rotation.x, glm::vec3(1, 0, 0));
+	RotateBy(rotation.y - m_Rotation.y, glm::vec3(0, 1, 0));
+	RotateBy(rotation.z - m_Rotation.z, glm::vec3(0, 0, 1));
 }
 
 void Transform::RecomputeMatrix() {

@@ -23,6 +23,9 @@ public:
 	Sprite(Texture* texture, Material* material);
 	virtual ~Sprite();
 
+	Texture* GetTexture();
+	void SetTexture(Texture* texture);
+
 	virtual Transform* GetTransform() override;
 
 	/// <summary>

@@ -10,7 +10,7 @@ SnakeGame::SnakeGame(Camera* camera) {
 	// push camera back
 	camera->SetPosition(glm::vec3(0, 0, 10));
 
-	m_Snake = new Snake();
+	m_Snake = new Snake(Settings::GetInt("SNAKE_LENGTH", 4), Settings::GetFloat("SNAKE_SPEED", 3));
 }
 
 SnakeGame::~SnakeGame() {

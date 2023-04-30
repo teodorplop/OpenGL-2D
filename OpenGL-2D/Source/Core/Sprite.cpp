@@ -13,13 +13,18 @@ Material* GetSpriteDefaultMaterial() {
 Sprite::Sprite(Texture* texture) : Sprite(texture, GetSpriteDefaultMaterial()) {}
 
 Sprite::Sprite(Texture* texture, Material* material) : IRenderable(GenerateMesh(), material) {
-	m_Texture = texture;
 	m_Material = material;
-
-	m_Material->SetProperty("_MainTexture", texture);
+	SetTexture(texture);
 }
 Sprite::~Sprite() {
 	delete m_Mesh;
+}
+
+Texture* Sprite::GetTexture() {
+	return m_Texture;
+}
+void Sprite::SetTexture(Texture* texture) {
+	m_Material->SetProperty("_MainTexture", m_Texture = texture);
 }
 
 Transform* Sprite::GetTransform() {
