@@ -6,7 +6,7 @@ SnakeGame::SnakeGame(Camera* camera) {
 	// background color
 	camera->SetClearColor(glm::vec3(0.815f, 0.925f, 0.992f));
 	// adjust camera size
-	camera->SetOrthographicSize(5);
+	camera->SetOrthographicSize(10);
 	// push camera back
 	camera->SetPosition(glm::vec3(0, 0, 10));
 

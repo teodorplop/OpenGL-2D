@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Engine.h"
+#include "SnakePart.h"
 
 class Snake : public ITickable {
 private:
@@ -8,21 +9,26 @@ private:
 
 	Texture* m_HeadTexture;
 	Texture* m_BodyTexture;
-	Texture* m_BodyCurveTexture;
+	Texture* m_CurveTexture;
 	Texture* m_TailTexture;
 
 	Direction m_Direction;
+	bool m_HasRequestedNewDirection;
+	Direction m_NewDirection;
+
 	float m_Speed;
+	float m_Timer;
 
-	Sprite* m_Head;
-	std::vector<Sprite*> m_Body;
-	Sprite* m_Tail;
+	std::vector<SnakePart*> m_Body;
 
-	bool WasSwitchDrectionRequested(Direction& newDirection);
+	bool WasSwitchDirectionRequested(Direction& newDirection);
 	bool CanSwitchDirection(Direction newDirection);
-	void SwitchDirection(Direction newDirection);
 
+	bool SwitchDirection();
 	void Move(float deltaTime);
+
+	void BodyFollow();
+	void RemoveCurve();
 
 protected:
 	void Tick(float deltaTime) override;

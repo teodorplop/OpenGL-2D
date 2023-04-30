@@ -29,6 +29,10 @@ void Transform::TranslateBy(const glm::vec3& distance) {
 	RecomputeMatrix();
 }
 
+void Transform::TranslateTo(const glm::vec3& position) {
+	TranslateBy(position - m_Position);
+}
+
 void Transform::ScaleBy(const glm::vec3& scale) {
 	m_Scale *= scale;
 
@@ -44,6 +48,12 @@ void Transform::RotateBy(float angle, const glm::vec3& axis) {
 
 	m_RotationMatrix = glm::rotate(m_RotationMatrix, glm::radians(angle), axis);
 	RecomputeMatrix();
+}
+
+void Transform::RotateTo(const glm::vec3& rotation) {
+	RotateBy(rotation.x, glm::vec3(1, 0, 0));
+	RotateBy(rotation.y, glm::vec3(0, 1, 0));
+	RotateBy(rotation.z, glm::vec3(0, 0, 1));
 }
 
 void Transform::RecomputeMatrix() {

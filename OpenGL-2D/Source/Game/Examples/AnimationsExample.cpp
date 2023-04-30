@@ -2,7 +2,7 @@
 
 AnimationsExample::AnimationsExample(Camera* camera) {
 	// background color
-	camera->SetClearColor(glm::vec3(0.815f, 0.925f, 0.992f));
+	camera->SetClearColor(glm::vec3(0.415f, 0.425f, 0.492f));
 	// adjust camera size
 	camera->SetOrthographicSize(5);
 	// push camera back

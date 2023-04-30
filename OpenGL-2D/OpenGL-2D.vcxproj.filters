@@ -105,6 +105,12 @@
     <ClCompile Include="Source\Game\Snake\SnakeGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\Snake\SnakeCurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Snake\SnakePart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Engine.h">
@@ -200,12 +206,16 @@
     <ClInclude Include="Source\Game\Snake\SnakeGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Game\Snake\SnakePart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Sprite.frag" />
     <None Include="Resources\Shaders\Sprite.vert" />
     <None Include="Resources\Shaders\SpriteSheet.vert" />
     <None Include="Resources\Shaders\SpriteSheet.frag" />
+    <None Include="Source\Game\Snake\SnakeCurve.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Settings\Settings.txt" />

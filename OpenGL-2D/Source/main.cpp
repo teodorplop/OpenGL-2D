@@ -4,12 +4,12 @@
 
 int main(int argc, char** argv) {
 	Engine* engine = new Engine();
-	AnimationsExample* animationsExample = new AnimationsExample(engine->GetCamera());
+	//AnimationsExample* animationsExample = new AnimationsExample(engine->GetCamera());
 	SnakeGame* snakeGame = new SnakeGame(engine->GetCamera());
 
 	engine->Run();
 
-	delete animationsExample;
+	//delete animationsExample;
 	delete snakeGame;
 	delete engine;
 }

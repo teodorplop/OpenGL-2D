@@ -33,6 +33,11 @@ public:
 	void TranslateBy(const glm::vec3& distance);
 
 	/// <summary>
+	/// Translates the object to a given position
+	/// </summary>
+	void TranslateTo(const glm::vec3& position);
+
+	/// <summary>
 	/// Scales by a certain amount on each axis
 	/// </summary>
 	void ScaleBy(const glm::vec3& scale);
@@ -41,4 +46,9 @@ public:
 	/// Rotates by a certain amount on one axis
 	/// </summary>
 	void RotateBy(float angle, const glm::vec3& axis);
+
+	/// <summary>
+	/// Rotates to a given rotation
+	/// </summary>
+	void RotateTo(const glm::vec3& rotation);
 };

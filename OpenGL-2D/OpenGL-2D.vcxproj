@@ -27,26 +27,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -149,7 +149,9 @@ copy "$(SolutionDir)Dependencies\GLFW\dll\*" "$(OutDir)"</Command>
     <ClCompile Include="Source\Core\Utils\StringUtils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
     <ClCompile Include="Source\Game\Snake\Snake.cpp" />
+    <ClCompile Include="Source\Game\Snake\SnakeCurve.cpp" />
     <ClCompile Include="Source\Game\Snake\SnakeGame.cpp" />
+    <ClCompile Include="Source\Game\Snake\SnakePart.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Core\Utils\FileIO.cpp" />
     <ClCompile Include="Source\Core\Utils\ImageUtils.cpp" />
@@ -185,6 +187,7 @@ copy "$(SolutionDir)Dependencies\GLFW\dll\*" "$(OutDir)"</Command>
     <ClInclude Include="Source\Game\Engine.h" />
     <ClInclude Include="Source\Game\Snake\Snake.h" />
     <ClInclude Include="Source\Game\Snake\SnakeGame.h" />
+    <ClInclude Include="Source\Game\Snake\SnakePart.h" />
     <ClInclude Include="Source\Game\Utils.h" />
     <ClInclude Include="Source\Game\Examples\AnimationsExample.h" />
     <ClInclude Include="Source\Core\Utils\StringUtils.h" />
@@ -194,6 +197,7 @@ copy "$(SolutionDir)Dependencies\GLFW\dll\*" "$(OutDir)"</Command>
     <None Include="Resources\Shaders\Sprite.vert" />
     <None Include="Resources\Shaders\SpriteSheet.frag" />
     <None Include="Resources\Shaders\SpriteSheet.vert" />
+    <None Include="Source\Game\Snake\SnakeCurve.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Settings\Settings.txt" />
