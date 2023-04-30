@@ -91,9 +91,9 @@ void Snake::Move(float deltaTime) {
 			m_HasRequestedNewDirection = false;
 		}
 
-		for (int i = m_Body.size() - 1; i >= 0; --i)
+		for (int i = (int)m_Body.size() - 1; i >= 0; --i)
 			m_Body[i]->Move(deltaTime);
-		for (int i = m_Body.size() - 1; i >= 0; --i)
+		for (int i = (int)m_Body.size() - 1; i >= 0; --i)
 			m_Body[i]->UpdateGraphic();
 
 		m_Timer += 1.0f / m_Speed;

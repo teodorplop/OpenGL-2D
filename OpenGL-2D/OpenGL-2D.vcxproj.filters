@@ -105,9 +105,6 @@
     <ClCompile Include="Source\Game\Snake\SnakeGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\Snake\SnakeCurve.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Game\Snake\SnakePart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -218,7 +215,6 @@
     <None Include="Resources\Shaders\Sprite.vert" />
     <None Include="Resources\Shaders\SpriteSheet.vert" />
     <None Include="Resources\Shaders\SpriteSheet.frag" />
-    <None Include="Source\Game\Snake\SnakeCurve.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Settings\Settings.txt" />
