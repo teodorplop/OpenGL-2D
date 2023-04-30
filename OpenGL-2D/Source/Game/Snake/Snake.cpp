@@ -6,10 +6,10 @@ Snake::Snake(int length, float speed) {
 	m_CurveTexture = new Texture("Snake/body_curve.png");
 	m_TailTexture = new Texture("Snake/tail.png");
 
-	CreateParts(length);
-
 	m_NewDirection = m_Direction = Direction::Up;
 	m_HasRequestedNewDirection = false;
+
+	CreateParts(length);
 
 	m_Speed = speed;
 	m_Timer = 1.0f / m_Speed;
@@ -26,19 +26,26 @@ Snake::~Snake() {
 }
 
 void Snake::CreateParts(int length) {
-	for (int i = 0; i < length; ++i) {
-		m_Body.push_back(CreatePart());
-		m_Body[i]->GetTransform()->TranslateBy(glm::vec3(0, -i, 0));
-	}
-	for (int i = 0; i < length; ++i) {
-		m_Body[i]->SetPrevious(i ? m_Body[i - 1] : nullptr);
-		m_Body[i]->SetNext(i < length - 1 ? m_Body[i + 1] : nullptr);
-		m_Body[i]->SetDirection(m_Direction);
-	}
+	for (int i = 0; i < length; ++i)
+		CreatePart()->GetTransform()->TranslateTo(glm::vec3(0, -i, 0));
 }
 
 SnakePart* Snake::CreatePart() {
-	return new SnakePart(m_HeadTexture, m_BodyTexture, m_CurveTexture, m_TailTexture);
+	SnakePart* part = new SnakePart(m_HeadTexture, m_BodyTexture, m_CurveTexture, m_TailTexture);
+
+	if (!m_Body.empty()) {
+		m_Body.back()->SetNext(part);
+		part->SetPrevious(m_Body.back());
+		part->SetDirection(m_Body.back()->GetDirection());
+	}
+	else {
+		part->SetDirection(m_Direction);
+	}
+	part->SetNext(nullptr);
+
+	m_Body.push_back(part);
+
+	return part;
 }
 
 void Snake::Tick(float deltaTime) {

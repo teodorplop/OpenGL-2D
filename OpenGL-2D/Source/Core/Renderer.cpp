@@ -14,10 +14,9 @@ void Renderer::Setup() {
 	// Depth test, so we can set which sprite is in front of another using the z values
 	glEnable(GL_DEPTH_TEST);
 
-	// TODO: this thing is not working as expected
 	// Blend, so we can display transparent textures
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Renderer::Render(Camera* camera) {

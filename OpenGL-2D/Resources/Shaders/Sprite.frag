@@ -12,7 +12,4 @@ out vec4 outColor;
 
 void main() {
 	outColor = texture(_MainTexture, In.textureCoord);
-
-	if (outColor.a < 0.1)
-		discard;
 }
