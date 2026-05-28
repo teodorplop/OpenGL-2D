@@ -16,6 +16,8 @@ The engine provides a lightweight framework for 2D rendering with:
 
 A classic Snake game implementation demonstrating the engine's capabilities. The game is currently under development.
 
+<img width="507" height="394" alt="image" src="https://github.com/user-attachments/assets/1b9a8a6f-f680-45b9-9f99-cc4b41f15894" />
+
 ---
 
 ## Prerequisites & Dependencies
